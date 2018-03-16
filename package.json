@@ -1,0 +1,48 @@
+{
+  "name": "yaml-boost",
+  "version": "0.0.0-development",
+  "description": "Yaml Parser with additional functionality.",
+  "main": "gruntfile.js",
+  "scripts": {
+    "test": "grunt gardener",
+    "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simlu/yaml-boost.git"
+  },
+  "author": "Lukas Siemon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simlu/yaml-boost/issues"
+  },
+  "homepage": "https://github.com/simlu/yaml-boost#readme",
+  "devDependencies": {
+    "js-gardener": "1.11.21",
+    "coveralls": "3.0.0",
+    "semantic-release": "11.0.2"
+  },
+  "keywords": [
+    "yaml",
+    "parser",
+    "files",
+    "merge",
+    "resolve",
+    "variables"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/simlu/yaml-boost/blob/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">= 6.10.3"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {},
+  "peerDependencies": {}
+}
