@@ -10,7 +10,9 @@
 
 # Yaml-Boost
 
-Basic Yaml Loading with additional functionality, i.e. resolve file depedencies, resolve variables, deep merge hierachies. Useful for loading improved serverless configuration.
+Basic Yaml Loading with additional functionality, i.e. resolve file depedencies, resolve variables, deep merge hierachies.
+
+Useful for loading improved [serverless](https://serverless.com/) configuration. For yaml loading this package uses [js-yaml](https://github.com/nodeca/js-yaml).
 
 ## Getting Started
 
