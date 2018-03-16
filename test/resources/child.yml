@@ -1,0 +1,3 @@
+subParent:
+  v1: ${opt:test}
+  v2: ${opt:test, 'default'}

@@ -2,7 +2,7 @@
   "name": "yaml-boost",
   "version": "0.0.0-development",
   "description": "Yaml Parser with additional functionality.",
-  "main": "gruntfile.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "grunt gardener",
     "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
@@ -19,8 +19,9 @@
   },
   "homepage": "https://github.com/simlu/yaml-boost#readme",
   "devDependencies": {
-    "js-gardener": "1.11.21",
+    "chai": "4.1.2",
     "coveralls": "3.0.0",
+    "js-gardener": "1.11.21",
     "semantic-release": "11.0.2"
   },
   "keywords": [
@@ -43,6 +44,11 @@
   "files": [
     "lib"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "js-yaml": "3.11.0",
+    "lodash.get": "4.4.2",
+    "lodash.mergewith": "4.6.1",
+    "lodash.set": "4.3.2"
+  },
   "peerDependencies": {}
 }
