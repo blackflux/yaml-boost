@@ -19,3 +19,15 @@ Basic Yaml Loading with additional functionality, i.e. resolve file depedencies,
 ## Usage
 
 ...
+
+### Deep Merge
+
+...
+
+### File Resolution
+
+...
+
+### Variable Resolution
+
+...
