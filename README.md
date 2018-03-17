@@ -20,7 +20,12 @@ Useful for loading improved [serverless](https://serverless.com/) configuration.
 
 ## Usage
 
-...
+<!-- eslint-disable import/no-unresolved -->
+```js
+const yaml = require("yaml-boost");
+
+yaml.load("input.yaml");
+```
 
 ### Deep Merge
 
