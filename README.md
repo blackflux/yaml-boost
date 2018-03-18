@@ -27,14 +27,32 @@ const yaml = require("yaml-boost");
 yaml.load("input.yaml");
 ```
 
+### Variable and File Resolution
+
+Works identical to how this is defined for serverless [here](https://serverless.com/framework/docs/providers/aws/guide/variables/).
+
 ### Deep Merge
 
-...
+Analogue to the `<<` yaml syntax we can use `<<<` to deep merge into the current nesting level.
+This is helpful when merging files into already existing hierarchies.
 
-### File Resolution
+Example:
 
-...
+```yaml
+data:
+  - list entry one
 
-### Variable Resolution
+<<<:
+  - data:
+      - list entry two
+  - other: things
+```
 
-...
+results in
+
+```yaml
+data:
+  - list entry one
+  - list entry two
+other: things
+```
