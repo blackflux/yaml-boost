@@ -24,7 +24,7 @@ Useful for loading improved [serverless](https://serverless.com/) configuration.
 ```js
 const yaml = require("yaml-boost");
 
-yaml.load("input.yaml");
+yaml.load("config.yaml");
 ```
 
 ### Variable and File Resolution
@@ -56,3 +56,18 @@ data:
   - list entry two
 other: things
 ```
+
+## Serverless Example
+
+Define `serverless.js` as
+
+<!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
+```js
+const path = require("path");
+const optimist = require('optimist');
+const yaml = require("yaml-boost");
+
+module.exports = yaml.load(path.join(__dirname, "serverless.core.yml"), optimist.argv);
+```
+
+Then instead of defining `serverless.yml`, define your config in `serverless.core.yml`.
