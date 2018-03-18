@@ -2,29 +2,32 @@ const expect = require('chai').expect;
 const path = require("path");
 const yaml = require("./../lib/index");
 
+const variablesFile = path.join(__dirname, "resources", 'variables.yml');
+const mergeFile = path.join(__dirname, "resources", 'merge.yml');
 const parentFile = path.join(__dirname, "resources", 'parent.yml');
 
 describe("Testing Yaml", () => {
-  it("Testing Load - Undefined Variable", () => {
+  it("Testing Variable Undefined", () => {
+    expect(yaml.load(variablesFile)).to.deep.equal({
+      plain: 'undefined', default: 'default'
+    });
+  });
+
+  it("Testing Variable Provided", () => {
+    expect(yaml.load(variablesFile, { test: "value" })).to.deep.equal({
+      plain: 'value', default: 'value'
+    });
+  });
+
+  it("Testing Merge", () => {
+    expect(yaml.load(mergeFile)).to.deep.equal({
+      a: { b: "c", d: "e", list: ["x", "y", "z"] }
+    });
+  });
+
+  it("Testing File Resolution", () => {
     expect(yaml.load(parentFile)).to.deep.equal({
-      parent: { v1: 'undefined', v2: 'default' },
-      raw: { subParent: { v1: 'undefined', v2: 'default' } },
-      subParent: { v1: 'undefined', v2: 'default' },
-      array: ["v1", "v2"]
+      child: { key: "value" }, childValue: "value"
     });
-  });
-
-  it("Testing Load - Provided Variable", () => {
-    expect(yaml.load(parentFile, { test: "info" })).to.deep.equal({
-      parent: { v1: 'info', v2: 'info' },
-      raw: { subParent: { v1: 'info', v2: 'info' } },
-      subParent: { v1: 'info', v2: 'info' },
-      array: ["v1", "v2"]
-    });
-  });
-
-  it("Testing Load - Invalid File Reference", () => {
-    expect(() => yaml.load(parentFile, { child: "unknown" }))
-      .to.throw(`ENOENT: no such file or directory, open '${path.join(path.dirname(parentFile), "unknown.yml")}'`);
   });
 });

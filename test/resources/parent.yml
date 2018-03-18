@@ -1,13 +1,6 @@
-parent:
-  ${file(./${opt:child, 'child'}.yml):subParent}
+child:
+  ${file(./child.yml)}
 
-raw:
-  ${file(./${opt:child, 'child'}.yml)}
 
-array:
-    - v1
-
-<<<:
-  - ${file(./${opt:child, 'child'}.yml)}
-  - array:
-    - v2
+childValue:
+  ${file(./child.yml):key}
