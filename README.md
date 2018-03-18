@@ -16,7 +16,7 @@ Useful for loading improved [serverless](https://serverless.com/) configuration.
 
 ## Getting Started
 
-  $ npm install --save yaml-boost
+    $ npm install --save yaml-boost
 
 ## Usage
 
