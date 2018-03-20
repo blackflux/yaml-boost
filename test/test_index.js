@@ -9,7 +9,8 @@ const parentFile = path.join(__dirname, "resources", 'parent.yml');
 describe("Testing Yaml", () => {
   it("Testing Variable Undefined", () => {
     expect(yaml.load(variablesFile)).to.deep.equal({
-      plain: 'undefined', default: 'default'
+      // eslint-disable-next-line no-template-curly-in-string
+      plain: '${opt:test}', default: 'default'
     });
   });
 
