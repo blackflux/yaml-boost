@@ -8,3 +8,6 @@ childValue:
 
 childBaked:
   ${file(./childVariable.yml), variable=value}
+
+childJs:
+  ${file(./child.js)}
