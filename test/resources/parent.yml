@@ -4,3 +4,10 @@ child:
 
 childValue:
   ${file(./child.yml):key}
+
+
+childBaked:
+  ${file(./childVariable.yml), variable=value}
+
+childJs:
+  ${file(./child.js)}

@@ -9,7 +9,8 @@ const parentFile = path.join(__dirname, "resources", 'parent.yml');
 describe("Testing Yaml", () => {
   it("Testing Variable Undefined", () => {
     expect(yaml.load(variablesFile)).to.deep.equal({
-      plain: 'undefined', default: 'default'
+      // eslint-disable-next-line no-template-curly-in-string
+      plain: '${opt:test}', default: 'default'
     });
   });
 
@@ -27,7 +28,10 @@ describe("Testing Yaml", () => {
 
   it("Testing File Resolution", () => {
     expect(yaml.load(parentFile)).to.deep.equal({
-      child: { key: "value" }, childValue: "value"
+      child: { key: "value" },
+      childValue: "value",
+      childBaked: { key: "value" },
+      childJs: { key: "value" }
     });
   });
 });

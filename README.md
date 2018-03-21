@@ -31,6 +31,28 @@ yaml.load("config.yaml");
 
 Works identical to how this is defined for serverless [here](https://serverless.com/framework/docs/providers/aws/guide/variables/).
 
+#### Extensions
+
+##### Bake variables when loading files
+
+```yaml
+${file(./path/to/file.yml), key1=value1&key2=value2}
+```
+
+##### Reference Js files
+
+Reference js instead of yaml files.
+
+```yaml
+${file(./path/to/file.js)}
+```
+
+The reference file needs to export simple object containing configuration
+
+```js
+module.exports = {};
+```
+
 ### Deep Merge
 
 Analogue to the `<<` yaml syntax we can use `<<<` to deep merge into the current nesting level.
