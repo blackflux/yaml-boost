@@ -28,7 +28,7 @@ describe("Testing Yaml", () => {
 
   it("Testing File Resolution", () => {
     expect(yaml.load(parentFile)).to.deep.equal({
-      child: { key: "value" }, childValue: "value"
+      child: { key: "value" }, childValue: "value", childBaked: { key: "value" }
     });
   });
 });
