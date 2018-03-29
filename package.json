@@ -21,7 +21,7 @@
   "devDependencies": {
     "chai": "4.1.2",
     "coveralls": "3.0.0",
-    "js-gardener": "1.12.2",
+    "js-gardener": "1.12.4",
     "semantic-release": "15.1.4"
   },
   "keywords": [
