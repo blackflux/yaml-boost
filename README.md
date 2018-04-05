@@ -20,7 +20,7 @@ Useful for loading improved [serverless](https://serverless.com/) configuration.
 
 ## Usage
 
-<!-- eslint-disable import/no-unresolved -->
+<!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
 const yaml = require("yaml-boost");
 

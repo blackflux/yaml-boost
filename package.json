@@ -4,7 +4,7 @@
   "description": "Yaml Parser with additional functionality.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "grunt gardener",
+    "test": "node gardener && nyc mocha --recursive",
     "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
     "semantic-release": "semantic-release"
   },
@@ -21,8 +21,9 @@
   "devDependencies": {
     "chai": "4.1.2",
     "coveralls": "3.0.0",
-    "js-gardener": "1.13.1",
-    "semantic-release": "15.1.5"
+    "js-gardener": "1.15.0",
+    "semantic-release": "15.1.5",
+    "nyc": "11.6.0"
   },
   "keywords": [
     "yaml",
@@ -50,5 +51,35 @@
     "lodash.mergewith": "4.6.1",
     "lodash.set": "4.3.2"
   },
-  "peerDependencies": {}
+  "peerDependencies": {},
+  "nyc": {
+    "tempDirectory": "./coverage/.nyc_output",
+    "report-dir": "./coverage",
+    "check-coverage": true,
+    "per-file": false,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "**/*.js"
+    ],
+    "exclude": [
+      "gardener.js",
+      "node_modules/*",
+      "coverage/*",
+      "flow-typed/*"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "extension": [],
+    "cache": true,
+    "all": true,
+    "babel": true
+  }
 }
