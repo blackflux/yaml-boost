@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const path = require("path");
-const yaml = require("./../lib/index");
+const yaml = require("./../src/index");
 
 const variablesFile = path.join(__dirname, "resources", 'variables.yml');
 const mergeFile = path.join(__dirname, "resources", 'merge.yml');
