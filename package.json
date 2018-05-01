@@ -25,7 +25,7 @@
   "homepage": "https://github.com/simlu/yaml-boost#readme",
   "devDependencies": {
     "chai": "4.1.2",
-    "coveralls": "3.0.0",
+    "coveralls": "3.0.1",
     "js-gardener": "1.22.9",
     "semantic-release": "15.1.11",
     "nyc": "11.7.1",
