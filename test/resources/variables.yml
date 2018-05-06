@@ -1,2 +1,2 @@
 plain: ${opt:test}
-default: ${opt:test, 'default'}
+default: ${opt:test, 'default.dot'}

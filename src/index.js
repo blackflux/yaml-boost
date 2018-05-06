@@ -13,7 +13,7 @@ const loadRecursive = (dir, data, vars) => {
   if (typeof result === 'string' || result instanceof String) {
     // replace yaml variables with defaults
     result = result.replace(
-      /\${opt:([a-zA-Z0-9]+?)(?:, ["']([a-zA-Z0-9-]+?)["'])?}/g,
+      /\${opt:([a-zA-Z0-9]+?)(?:, ["']([a-zA-Z0-9-.]+?)["'])?}/g,
       (match, k, v) => get(vars, k, v || match)
     );
     // load referenced yaml file
