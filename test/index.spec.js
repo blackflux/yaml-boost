@@ -10,7 +10,7 @@ describe("Testing Yaml", () => {
   it("Testing Variable Undefined", () => {
     expect(yaml.load(variablesFile)).to.deep.equal({
       // eslint-disable-next-line no-template-curly-in-string
-      plain: '${opt:test}', default: 'default'
+      plain: '${opt:test}', default: 'default.dot'
     });
   });
 
