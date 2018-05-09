@@ -28,7 +28,7 @@
     "coveralls": "3.0.1",
     "js-gardener": "1.22.9",
     "semantic-release": "15.1.11",
-    "nyc": "11.7.1",
+    "nyc": "11.7.2",
     "babel-cli": "7.0.0-beta.3"
   },
   "keywords": [
