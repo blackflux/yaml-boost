@@ -12,5 +12,5 @@ childBaked:
 childJs:
   ${file(./child.js)}
 
-childRel:
+childDir:
   ${file(./dir/child.yml)}
