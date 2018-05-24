@@ -6,12 +6,13 @@
   "scripts": {
     "test": "npm run clean && npm run gardener && npm run test-simple",
     "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
-    "semantic-release": "npm run clean-build && npx semantic-release",
+    "semantic-release": "npm run build-artifact && npm run clean-build && npx semantic-release",
     "clean": "rm -rf lib",
     "build": "npx babel src --out-dir lib --source-maps inline --copy-files --include-dotfiles",
     "clean-build": "npm run clean && npm run build",
     "test-simple": "nyc mocha \"./test/**/*.spec.js\"",
-    "gardener": "node gardener"
+    "gardener": "node gardener",
+    "build-artifact": "npm run clean-build && tar -zxvf $(npm pack) && rm *-0.0.0-development.tgz && cd package && tar -zcvf ../release.tar.gz . && cd .. && rm -rf package"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,14 @@
   "devDependencies": {
     "chai": "4.1.2",
     "coveralls": "3.0.1",
-    "js-gardener": "1.22.9",
-    "semantic-release": "15.1.11",
-    "nyc": "11.7.1",
-    "babel-cli": "7.0.0-beta.3"
+    "js-gardener": "1.23.4",
+    "semantic-release": "15.5.0",
+    "nyc": "11.8.0",
+    "babel-cli": "7.0.0-beta.3",
+    "babel-register": "7.0.0-beta.3",
+    "babel-eslint": "8.2.3",
+    "babel-plugin-transform-flow-comments": "7.0.0-beta.3",
+    "babel-preset-flow": "7.0.0-beta.3"
   },
   "keywords": [
     "yaml",

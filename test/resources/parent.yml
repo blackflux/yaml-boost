@@ -11,3 +11,6 @@ childBaked:
 
 childJs:
   ${file(./child.js)}
+
+childDir:
+  ${file(./dir/child.yml)}

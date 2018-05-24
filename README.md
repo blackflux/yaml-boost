@@ -53,6 +53,14 @@ The reference file needs to export simple object containing configuration
 module.exports = {};
 ```
 
+### Relative File References
+
+Once can reference files relative to the current file by using `^` as a prefix like so
+
+```yaml
+${file(^/subfolder/of/current/file.yml)}
+``` 
+
 ### Deep Merge
 
 Analogue to the `<<` yaml syntax we can use `<<<` to deep merge into the current nesting level.

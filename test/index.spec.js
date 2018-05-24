@@ -31,7 +31,8 @@ describe("Testing Yaml", () => {
       child: { key: "value" },
       childValue: "value",
       childBaked: { key: "value" },
-      childJs: { key: "value" }
+      childJs: { key: "value" },
+      childDir: { grandchild: { key: "value" } }
     });
   });
 });
