@@ -20,7 +20,7 @@ const loadRecursive = (dir, relDir, data, vars) => {
     const reqMatch = /^\${require\(([a-zA-Z0-9._/-@]+?)\)(?::([a-zA-Z0-9.]+?))?}$/g.exec(result);
     if (reqMatch) {
       // eslint-disable-next-line global-require, import/no-dynamic-require
-      result = get(require(reqMatch[1]), reqMatch[2]);
+      result = reqMatch[2] ? get(require(reqMatch[1]), reqMatch[2]) : require(reqMatch[1]);
     }
     // load referenced yaml file
     const fileMatch = (

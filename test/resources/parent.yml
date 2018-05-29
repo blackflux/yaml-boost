@@ -15,5 +15,8 @@ childJs:
 childDir:
   ${file(./dir/child.yml)}
 
-childRequire:
+childRequireKey:
   key: ${require(chai):version}
+
+childRequire:
+  key: ${require(chai)}
