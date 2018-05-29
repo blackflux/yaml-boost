@@ -39,6 +39,14 @@ Works identical to how this is defined for serverless [here](https://serverless.
 ${file(./path/to/file.yml), key1=value1&key2=value2}
 ```
 
+##### Reference Packages
+
+You can reference packages by using
+
+```yaml
+${require(PACKAGE):path.to.key.in.module}
+```
+
 ##### Reference Js files
 
 Reference js instead of yaml files.
@@ -53,7 +61,7 @@ The reference file needs to export simple object containing configuration
 module.exports = {};
 ```
 
-### Relative File References
+##### Relative File References
 
 Once can reference files relative to the current file by using `^` as a prefix like so
 
@@ -61,7 +69,7 @@ Once can reference files relative to the current file by using `^` as a prefix l
 ${file(^/subfolder/of/current/file.yml)}
 ``` 
 
-### Deep Merge
+##### Deep Merge
 
 Analogue to the `<<` yaml syntax we can use `<<<` to deep merge into the current nesting level.
 This is helpful when merging files into already existing hierarchies.
