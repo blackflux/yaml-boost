@@ -13,31 +13,35 @@ const loadRecursive = (dir, relDir, data, vars) => {
   if (typeof result === 'string' || result instanceof String) {
     // replace yaml variables with defaults
     result = result.replace(
-      /\${opt:([a-zA-Z0-9]+?)(?:, ["']([a-zA-Z0-9-.]+?)["'])?}/g,
+      /\${opt:([a-zA-Z0-9]+?)(?:, ["']([a-zA-Z0-9\-.]+?)["'])?}/g,
       (match, k, v) => get(vars, k, v || match)
     );
     // load requires
-    const reqMatch = /^\${require\(([a-zA-Z0-9._/-@]+?)\)(?::([a-zA-Z0-9.]+?))?}$/g.exec(result);
-    if (reqMatch) {
-      // eslint-disable-next-line global-require, import/no-dynamic-require
-      result = reqMatch[2] ? get(require(reqMatch[1]), reqMatch[2]) : require(reqMatch[1]);
-    }
-    // load referenced yaml file
-    const fileMatch = (
-      /^\${file\((\^)?(~?[a-zA-Z0-9._/-]+?)\)(?::([a-zA-Z0-9.]+?))?(?:, ([a-zA-Z0-9=&-]+?))?}$/g.exec(result)
-    );
-    if (fileMatch) {
-      const filePath = path.join(fileMatch[1] === "^" ? relDir : dir, fileMatch[2]);
-      const loaded = filePath.endsWith(".yml")
-        ? yaml.safeLoad(fs.readFileSync(filePath, 'utf8'))
+    const match = (
+      /^\${(require|file)\(([~^]?[a-zA-Z0-9._/\-@]+?)\)(?::([a-zA-Z0-9.]+?))?(?:, ([a-zA-Z0-9=\-&]+?))?}$/g
+    ).exec(result);
+    if (match) {
+      let loaded;
+      let newRelDir = relDir;
+      if (match[1] === "file") {
+        const filePath = match[2].startsWith("^")
+          ? path.join(relDir, match[2].substring(1))
+          : path.join(dir, match[2]);
+        newRelDir = path.dirname(filePath);
+        loaded = filePath.endsWith(".yml")
+          ? yaml.safeLoad(fs.readFileSync(filePath, 'utf8'))
+          // eslint-disable-next-line global-require, import/no-dynamic-require
+          : require(filePath);
+      } else {
         // eslint-disable-next-line global-require, import/no-dynamic-require
-        : require(filePath);
+        loaded = require(match[2]);
+      }
       result = loadRecursive(
         dir,
-        path.dirname(filePath),
-        fileMatch[3] ? get(loaded, fileMatch[3]) : loaded,
-        Object.assign({}, vars, fileMatch[4] ? JSON
-          .parse(`{"${fileMatch[4].replace(/&/g, "\",\"").replace(/=/g, "\":\"")}"}`) : {})
+        newRelDir,
+        match[3] ? get(loaded, match[3]) : loaded,
+        Object.assign({}, vars, match[4] ? JSON
+          .parse(`{"${match[4].replace(/&/g, "\",\"").replace(/=/g, "\":\"")}"}`) : {})
       );
     }
   }
