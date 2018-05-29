@@ -16,12 +16,18 @@ const loadRecursive = (dir, relDir, data, vars) => {
       /\${opt:([a-zA-Z0-9]+?)(?:, ["']([a-zA-Z0-9-.]+?)["'])?}/g,
       (match, k, v) => get(vars, k, v || match)
     );
+    // load requires
+    const reqMatch = /^\${require\(([a-zA-Z0-9._/-@]+?)\)(?::([a-zA-Z0-9.]+?))?}$/g.exec(result);
+    if (reqMatch) {
+      // eslint-disable-next-line global-require, import/no-dynamic-require
+      result = get(require(reqMatch[1]), reqMatch[2]);
+    }
     // load referenced yaml file
-    const match = (
+    const fileMatch = (
       /^\${file\((\^)?(~?[a-zA-Z0-9._/-]+?)\)(?::([a-zA-Z0-9.]+?))?(?:, ([a-zA-Z0-9=&-]+?))?}$/g.exec(result)
     );
-    if (match) {
-      const filePath = path.join(match[1] === "^" ? relDir : dir, match[2]);
+    if (fileMatch) {
+      const filePath = path.join(fileMatch[1] === "^" ? relDir : dir, fileMatch[2]);
       const loaded = filePath.endsWith(".yml")
         ? yaml.safeLoad(fs.readFileSync(filePath, 'utf8'))
         // eslint-disable-next-line global-require, import/no-dynamic-require
@@ -29,9 +35,9 @@ const loadRecursive = (dir, relDir, data, vars) => {
       result = loadRecursive(
         dir,
         path.dirname(filePath),
-        match[3] ? get(loaded, match[3]) : loaded,
-        Object.assign({}, vars, match[4] ? JSON
-          .parse(`{"${match[4].replace(/&/g, "\",\"").replace(/=/g, "\":\"")}"}`) : {})
+        fileMatch[3] ? get(loaded, fileMatch[3]) : loaded,
+        Object.assign({}, vars, fileMatch[4] ? JSON
+          .parse(`{"${fileMatch[4].replace(/&/g, "\",\"").replace(/=/g, "\":\"")}"}`) : {})
       );
     }
   }
