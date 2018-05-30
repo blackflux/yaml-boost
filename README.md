@@ -27,6 +27,8 @@ const yaml = require("yaml-boost");
 yaml.load("config.yaml");
 ```
 
+Matching `yaml.dump()` function is also available.
+
 ### Variable and File Resolution
 
 Works identical to how this is defined for serverless [here](https://serverless.com/framework/docs/providers/aws/guide/variables/).
