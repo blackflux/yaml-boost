@@ -18,7 +18,7 @@ const loadRecursive = (dir, relDir, data, vars) => {
     );
     // load requires
     const match = (
-      /^\${(require|file)\(([~^]?[a-zA-Z0-9._/\-@]+?)\)(?::([a-zA-Z0-9.]+?))?(?:, ([a-zA-Z0-9=\-&.:\/]+?))?}$/g
+      /^\${(require|file)\(([~^]?[a-zA-Z0-9._\-@/]+?)\)(?::([a-zA-Z0-9.]+?))?(?:, ([a-zA-Z0-9=\-&/.:]+?))?}$/g
     ).exec(result);
     if (match) {
       let loaded;
