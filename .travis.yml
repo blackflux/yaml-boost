@@ -6,7 +6,6 @@ notifications:
   email: false
 before_install:
   - npm install -g npm
-  - npm install -g greenkeeper-lockfile@1
 install:
   - npm install
 node_js:
@@ -14,10 +13,8 @@ node_js:
   - 6.10.3
   - '8'
   - '6'
-before_script: greenkeeper-lockfile-update
 script:
   - npm test
-after_script: greenkeeper-lockfile-upload
 after_success:
   - npm run coveralls
   - npm run semantic-release
