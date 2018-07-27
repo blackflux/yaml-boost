@@ -6,6 +6,7 @@ notifications:
   email: false
 before_install:
   - npm install -g npm gally
+  - ga promote $TRAVIS_BRANCH
 install:
   - npm install
 node_js:
@@ -15,6 +16,5 @@ node_js:
 script:
   - npm test
 after_success:
-  - ga promote $TRAVIS_BRANCH
   - npm run coveralls
   - npm run semantic-release
