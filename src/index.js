@@ -28,7 +28,7 @@ const loadRecursive = (dir, relDir, data, vars) => {
           ? path.join(relDir, match[2].substring(1))
           : path.join(dir, match[2]);
         newRelDir = path.dirname(filePath);
-        loaded = filePath.endsWith(".yml")
+        loaded = (filePath.endsWith(".yml") || filePath.endsWith(".yaml"))
           ? yaml.safeLoad(fs.readFileSync(filePath, 'utf8'))
           // eslint-disable-next-line global-require, import/no-dynamic-require
           : require(filePath);
