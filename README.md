@@ -32,6 +32,8 @@ Matching `yaml.dump()` function is also available.
 
 Works identical to how this is defined for serverless [here](https://serverless.com/framework/docs/providers/aws/guide/variables/).
 
+Both `yml` and `yaml` file endings are supported.
+
 #### Extensions
 
 ##### Bake variables when loading files
