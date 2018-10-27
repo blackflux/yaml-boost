@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/simlu/yaml-boost.git"
+    "url": "https://github.com/blackflux/yaml-boost.git"
   },
   "author": "Lukas Siemon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/simlu/yaml-boost/issues"
+    "url": "https://github.com/blackflux/yaml-boost/issues"
   },
-  "homepage": "https://github.com/simlu/yaml-boost#readme",
+  "homepage": "https://github.com/blackflux/yaml-boost#readme",
   "devDependencies": {
     "chai": "4.2.0",
     "coveralls": "3.0.2",
@@ -47,7 +47,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/simlu/yaml-boost/blob/master/LICENSE"
+      "url": "https://github.com/blackflux/yaml-boost/blob/master/LICENSE"
     }
   ],
   "engines": {
