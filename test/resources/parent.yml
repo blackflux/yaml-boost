@@ -12,6 +12,9 @@ childBaked:
 childJs:
   ${file(./child.js)}
 
+childFn:
+  ${fileFn(./child-fn.js), variable=value}
+
 childDir:
   ${file(./dir/child.yml)}
 
