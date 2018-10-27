@@ -32,6 +32,7 @@ describe("Testing Yaml", () => {
       childValue: "value",
       childBaked: { key: "value" },
       childJs: { key: "value" },
+      childFn: { key: { variable: "value" } },
       // eslint-disable-next-line global-require
       childRequireKey: { key: require("chai").version },
       // eslint-disable-next-line global-require

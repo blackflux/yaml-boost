@@ -18,12 +18,15 @@ const loadRecursive = (dir, relDir, data, vars) => {
     );
     // load requires
     const match = (
-      /^\${(require|file)\(([~^]?[a-zA-Z0-9._\-@/]+?)\)(?::([a-zA-Z0-9.]+?))?(?:, ([a-zA-Z0-9=\-&/.:[\],]+?))?}$/g
+      /^\${(require|file|fileFn)\(([~^]?[a-zA-Z\d._\-@/]+?)\)(?::([a-zA-Z\d.]+?))?(?:, ([a-zA-Z\d=\-&/.:[\],]+?))?}$/g
     ).exec(result);
     if (match) {
+      const varsNew = Object.assign({}, vars, match[4] ? JSON
+        .parse(`{"${match[4].replace(/&/g, "\",\"").replace(/=/g, "\":\"")}"}`) : {});
+
       let loaded;
       let newRelDir = relDir;
-      if (match[1] === "file") {
+      if (["file", "fileFn"].includes(match[1])) {
         const filePath = match[2].startsWith("^")
           ? path.join(relDir, match[2].substring(1))
           : path.join(dir, match[2]);
@@ -32,17 +35,14 @@ const loadRecursive = (dir, relDir, data, vars) => {
           ? yaml.safeLoad(fs.readFileSync(filePath, 'utf8'))
           // eslint-disable-next-line global-require, import/no-dynamic-require
           : require(filePath);
+        if (match[1] === "fileFn") {
+          loaded = loaded(varsNew);
+        }
       } else {
         // eslint-disable-next-line global-require, import/no-dynamic-require
         loaded = require(match[2]);
       }
-      result = loadRecursive(
-        dir,
-        newRelDir,
-        match[3] ? get(loaded, match[3]) : loaded,
-        Object.assign({}, vars, match[4] ? JSON
-          .parse(`{"${match[4].replace(/&/g, "\",\"").replace(/=/g, "\":\"")}"}`) : {})
-      );
+      result = loadRecursive(dir, newRelDir, match[3] ? get(loaded, match[3]) : loaded, varsNew);
     }
   }
   if (result instanceof Object) {

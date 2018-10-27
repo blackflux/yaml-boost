@@ -65,6 +65,20 @@ The reference file needs to export simple object containing configuration
 module.exports = {};
 ```
 
+##### Reference Function inside Js file
+
+Reference function inside js file.
+
+```yaml
+${fileFn(./path/to/file.js)}
+```
+
+The reference file needs to export simple function returning an object. Available variables are passed in.
+
+```js
+module.exports = args => ({ args });
+```
+
 ##### Relative File References
 
 Once can reference files relative to the current file by using `^` as a prefix like so
