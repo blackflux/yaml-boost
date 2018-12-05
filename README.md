@@ -119,10 +119,10 @@ Define `serverless.js` as
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
 const path = require('path');
-const optimist = require('optimist');
+const minimist = require('minimist');
 const yaml = require('yaml-boost');
 
-module.exports = yaml.load(path.join(__dirname, 'serverless.core.yml'), optimist.argv);
+module.exports = yaml.load(path.join(__dirname, 'serverless.core.yml'), minimist(process.argv.slice(2)));
 ```
 
 Then instead of defining `serverless.yml`, define your config in `serverless.core.yml`.
