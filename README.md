@@ -21,9 +21,9 @@ Useful for loading improved [serverless](https://serverless.com/) configuration.
 
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
-const yaml = require("yaml-boost");
+const yaml = require('yaml-boost');
 
-yaml.load("config.yaml");
+yaml.load('config.yaml');
 ```
 
 Matching `yaml.dump()` function is also available.
@@ -118,11 +118,11 @@ Define `serverless.js` as
 
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
-const path = require("path");
+const path = require('path');
 const optimist = require('optimist');
-const yaml = require("yaml-boost");
+const yaml = require('yaml-boost');
 
-module.exports = yaml.load(path.join(__dirname, "serverless.core.yml"), optimist.argv);
+module.exports = yaml.load(path.join(__dirname, 'serverless.core.yml'), optimist.argv);
 ```
 
 Then instead of defining `serverless.yml`, define your config in `serverless.core.yml`.
