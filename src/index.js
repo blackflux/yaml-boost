@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 const get = require('lodash.get');
 const set = require('lodash.set');
 const mergeWith = require('lodash.mergewith');
@@ -22,20 +22,20 @@ const loadRecursive = (dir, relDir, data, vars) => {
     ).exec(result);
     if (match) {
       const varsNew = Object.assign({}, vars, match[4] ? JSON
-        .parse(`{"${match[4].replace(/&/g, "\",\"").replace(/=/g, "\":\"")}"}`) : {});
+        .parse(`{"${match[4].replace(/&/g, '","').replace(/=/g, '":"')}"}`) : {});
 
       let loaded;
       let newRelDir = relDir;
-      if (["file", "fileFn"].includes(match[1])) {
-        const filePath = match[2].startsWith("^")
+      if (['file', 'fileFn'].includes(match[1])) {
+        const filePath = match[2].startsWith('^')
           ? path.join(relDir, match[2].substring(1))
           : path.join(dir, match[2]);
         newRelDir = path.dirname(filePath);
-        loaded = (filePath.endsWith(".yml") || filePath.endsWith(".yaml"))
+        loaded = (filePath.endsWith('.yml') || filePath.endsWith('.yaml'))
           ? yaml.safeLoad(fs.readFileSync(filePath, 'utf8'))
           // eslint-disable-next-line global-require, import/no-dynamic-require
           : require(filePath);
-        if (match[1] === "fileFn") {
+        if (match[1] === 'fileFn') {
           loaded = loaded(varsNew);
         }
       } else {
@@ -46,8 +46,8 @@ const loadRecursive = (dir, relDir, data, vars) => {
     }
   }
   if (result instanceof Object) {
-    const toMerge = get(result, "<<<", []).map(e => loadRecursive(dir, relDir, e, vars));
-    delete result["<<<"];
+    const toMerge = get(result, '<<<', []).map(e => loadRecursive(dir, relDir, e, vars));
+    delete result['<<<'];
     Object.keys(result).forEach(key => set(result, key, loadRecursive(dir, relDir, get(result, key), vars)));
     result = toMerge.reduce((prev, cur) => mergeWith(prev, cur, concatArrays), result);
   }
