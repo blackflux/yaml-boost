@@ -1,14 +1,13 @@
-[![Build Status](https://img.shields.io/travis/simlu/yaml-boost/master.svg)](https://travis-ci.org/simlu/yaml-boost)
-[![Test Coverage](https://img.shields.io/coveralls/simlu/yaml-boost/master.svg)](https://coveralls.io/github/simlu/yaml-boost?branch=master)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=simlu/yaml-boost)](https://dependabot.com)
-[![Dependencies](https://david-dm.org/simlu/yaml-boost/status.svg)](https://david-dm.org/simlu/yaml-boost)
+# Yaml-Boost
+
+[![Build Status](https://circleci.com/gh/blackflux/yaml-boost.png?style=shield)](https://circleci.com/gh/blackflux/yaml-boost)
+[![Test Coverage](https://img.shields.io/coveralls/blackflux/yaml-boost/master.svg)](https://coveralls.io/github/blackflux/yaml-boost?branch=master)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=blackflux/yaml-boost)](https://dependabot.com)
+[![Dependencies](https://david-dm.org/blackflux/yaml-boost/status.svg)](https://david-dm.org/blackflux/yaml-boost)
 [![NPM](https://img.shields.io/npm/v/yaml-boost.svg)](https://www.npmjs.com/package/yaml-boost)
 [![Downloads](https://img.shields.io/npm/dt/yaml-boost.svg)](https://www.npmjs.com/package/yaml-boost)
 [![Semantic-Release](https://github.com/blackflux/js-gardener/blob/master/assets/icons/semver.svg)](https://github.com/semantic-release/semantic-release)
 [![Gardener](https://github.com/blackflux/js-gardener/blob/master/assets/badge.svg)](https://github.com/blackflux/js-gardener)
-[![Gitter](https://github.com/simlu/js-gardener/blob/master/assets/icons/gitter.svg)](https://gitter.im/simlu/yaml-boost)
-
-# Yaml-Boost
 
 Basic Yaml Loading with additional functionality, i.e. resolve file depedencies, resolve variables, deep merge hierachies.
 
@@ -22,9 +21,9 @@ Useful for loading improved [serverless](https://serverless.com/) configuration.
 
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
-const yaml = require("yaml-boost");
+const yaml = require('yaml-boost');
 
-yaml.load("config.yaml");
+yaml.load('config.yaml');
 ```
 
 Matching `yaml.dump()` function is also available.
@@ -119,11 +118,11 @@ Define `serverless.js` as
 
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
-const path = require("path");
-const optimist = require('optimist');
-const yaml = require("yaml-boost");
+const path = require('path');
+const minimist = require('minimist');
+const yaml = require('yaml-boost');
 
-module.exports = yaml.load(path.join(__dirname, "serverless.core.yml"), optimist.argv);
+module.exports = yaml.load(path.join(__dirname, 'serverless.core.yml'), minimist(process.argv.slice(2)));
 ```
 
 Then instead of defining `serverless.yml`, define your config in `serverless.core.yml`.
