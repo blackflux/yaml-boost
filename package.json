@@ -27,7 +27,7 @@
   "devDependencies": {
     "chai": "4.2.0",
     "coveralls": "3.0.3",
-    "js-gardener": "1.37.3",
+    "js-gardener": "1.37.4",
     "semantic-release": "15.13.3",
     "nyc": "13.3.0",
     "babel-eslint": "10.0.1",
@@ -59,7 +59,7 @@
     "lib"
   ],
   "dependencies": {
-    "js-yaml": "3.12.1",
+    "js-yaml": "3.12.2",
     "lodash.get": "4.4.2",
     "lodash.mergewith": "4.6.1",
     "lodash.set": "4.3.2"
