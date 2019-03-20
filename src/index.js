@@ -42,7 +42,8 @@ const loadRecursive = (dir, relDir, data, vars) => {
         // eslint-disable-next-line global-require, import/no-dynamic-require
         loaded = require(match[2]);
       }
-      result = loadRecursive(dir, newRelDir, match[3] ? get(loaded, match[3]) : loaded, varsNew);
+      const target = match[3] ? get(loaded, match[3]) : loaded;
+      result = loadRecursive(dir, newRelDir, typeof target === 'function' ? target() : target, varsNew);
     }
   }
   if (result instanceof Object) {
