@@ -36,6 +36,8 @@ describe('Testing Yaml', () => {
       // eslint-disable-next-line global-require
       childRequireKey: { key: require('chai').version },
       // eslint-disable-next-line global-require
+      childRequireFn: { key: require('path').join() },
+      // eslint-disable-next-line global-require
       childRequire: { key: require('chai') },
       childDir: { grandchild: { key: 'value' } }
     });

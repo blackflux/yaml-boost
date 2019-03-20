@@ -21,5 +21,8 @@ childDir:
 childRequireKey:
   key: ${require(chai):version}
 
+childRequireFn:
+  key: ${require(path):join}
+
 childRequire:
   key: ${require(chai)}
