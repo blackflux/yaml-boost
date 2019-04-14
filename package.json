@@ -32,10 +32,10 @@
     "nyc": "13.3.0",
     "babel-eslint": "10.0.1",
     "@babel/register": "7.4.0",
-    "@babel/core": "7.4.0",
-    "@babel/cli": "7.2.3",
+    "@babel/core": "7.4.3",
+    "@babel/cli": "7.4.3",
     "@babel/plugin-transform-flow-comments": "7.4.0",
-    "@babel/plugin-proposal-object-rest-spread": "7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.4.3",
     "@babel/preset-flow": "7.0.0"
   },
   "keywords": [
@@ -59,7 +59,7 @@
     "lib"
   ],
   "dependencies": {
-    "js-yaml": "3.13.0",
+    "js-yaml": "3.13.1",
     "lodash.get": "4.4.2",
     "lodash.mergewith": "4.6.1",
     "lodash.set": "4.3.2"
