@@ -36,7 +36,7 @@
     "eslint": "5.16.0",
     "js-gardener": "2.0.40",
     "nyc": "14.1.1",
-    "semantic-release": "15.13.12"
+    "semantic-release": "15.13.16"
   },
   "keywords": [
     "yaml",
