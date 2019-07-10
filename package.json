@@ -61,7 +61,7 @@
   "dependencies": {
     "js-yaml": "3.13.1",
     "lodash.get": "4.4.2",
-    "lodash.mergewith": "4.6.1",
+    "lodash.mergewith": "4.6.2",
     "lodash.set": "4.3.2"
   },
   "peerDependencies": {},
