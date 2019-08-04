@@ -25,7 +25,9 @@
   },
   "author": "Lukas Siemon",
   "license": "MIT",
-  "bugs": {"url": "https://github.com/blackflux/yaml-boost/issues"},
+  "bugs": {
+    "url": "https://github.com/blackflux/yaml-boost/issues"
+  },
   "homepage": "https://github.com/blackflux/yaml-boost#readme",
   "devDependencies": {
     "@babel/cli": "7.5.5",
@@ -33,7 +35,7 @@
     "@babel/plugin-proposal-object-rest-spread": "7.5.5",
     "@babel/register": "7.5.5",
     "@blackflux/eslint-plugin-rules": "1.1.0",
-    "@blackflux/robo-config-plugin": "2.2.3",
+    "@blackflux/robo-config-plugin": "2.3.0",
     "babel-eslint": "10.0.2",
     "chai": "4.2.0",
     "coveralls": "3.0.5",
@@ -42,15 +44,26 @@
     "nyc": "14.1.1",
     "semantic-release": "15.13.19"
   },
-  "keywords": ["yaml", "parser", "files", "merge", "resolve", "variables"],
+  "keywords": [
+    "yaml",
+    "parser",
+    "files",
+    "merge",
+    "resolve",
+    "variables"
+  ],
   "licenses": [
     {
       "type": "MIT",
       "url": "https://github.com/blackflux/yaml-boost/blob/master/LICENSE"
     }
   ],
-  "engines": {"node": ">= 6.10.3"},
-  "files": ["lib"],
+  "engines": {
+    "node": ">= 6.10.3"
+  },
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "js-yaml": "3.13.1",
     "lodash.get": "4.4.2",
@@ -67,10 +80,22 @@
     "statements": 100,
     "functions": 100,
     "branches": 100,
-    "include": ["**/*.js"],
-    "exclude": ["gardener.js", "node_modules/*", "coverage/*", "lib/*"],
-    "reporter": ["lcov", "text-summary"],
-    "require": ["@babel/register"],
+    "include": [
+      "**/*.js"
+    ],
+    "exclude": [
+      "gardener.js",
+      "node_modules/*",
+      "coverage/*",
+      "lib/*"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "@babel/register"
+    ],
     "extension": [],
     "cache": true,
     "all": true,
