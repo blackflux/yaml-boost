@@ -75,7 +75,7 @@ ${fileFn(./path/to/file.js)}
 The reference file needs to export simple function returning an object. Available variables are passed in.
 
 ```js
-module.exports = args => ({ args });
+module.exports = (args) => ({ args });
 ```
 
 ##### Relative File References
