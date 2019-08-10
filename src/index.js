@@ -21,8 +21,11 @@ const loadRecursive = (dir, relDir, data, vars) => {
       /^\${(require|file|fileFn)\(([~^]?[a-zA-Z\d._\-@/]+?)\)(?::([a-zA-Z\d.]+?))?(?:, ([a-zA-Z\d=\-&/.:[\],]+?))?}$/g
     ).exec(result);
     if (match) {
-      const varsNew = Object.assign({}, vars, match[4] ? JSON
-        .parse(`{"${match[4].replace(/&/g, '","').replace(/=/g, '":"')}"}`) : {});
+      const varsNew = {
+        ...vars,
+        ...(match[4] ? JSON
+          .parse(`{"${match[4].replace(/&/g, '","').replace(/=/g, '":"')}"}`) : {})
+      };
 
       let loaded;
       let newRelDir = relDir;
@@ -47,9 +50,9 @@ const loadRecursive = (dir, relDir, data, vars) => {
     }
   }
   if (result instanceof Object) {
-    const toMerge = get(result, '<<<', []).map(e => loadRecursive(dir, relDir, e, vars));
+    const toMerge = get(result, '<<<', []).map((e) => loadRecursive(dir, relDir, e, vars));
     delete result['<<<'];
-    Object.keys(result).forEach(key => set(result, key, loadRecursive(dir, relDir, get(result, key), vars)));
+    Object.keys(result).forEach((key) => set(result, key, loadRecursive(dir, relDir, get(result, key), vars)));
     result = toMerge.reduce((prev, cur) => mergeWith(prev, cur, concatArrays), result);
   }
   return result;

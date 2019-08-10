@@ -1,1 +1,1 @@
-module.exports = args => ({ key: args });
+module.exports = (args) => ({ key: args });
