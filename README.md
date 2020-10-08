@@ -17,6 +17,20 @@ Useful for loading improved [serverless](https://serverless.com/) configuration.
 
     $ npm install --save yaml-boost
 
+## Api
+
+### resolve(refPath, content, vars)
+
+Resolve content with variables at given refPath.
+
+### load(filePath, vars = {})
+
+Load filePath with given variables.
+
+### dump
+
+As provided by `js-yaml` through `safeDump`
+
 ## Usage
 
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
@@ -84,7 +98,7 @@ Once can reference files relative to the current file by using `^` as a prefix l
 
 ```yaml
 ${file(^/subfolder/of/current/file.yml)}
-``` 
+```
 
 ##### Deep Merge
 
