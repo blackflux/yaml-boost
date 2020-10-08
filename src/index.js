@@ -60,13 +60,13 @@ const loadRecursive = (dir, relDir, data, vars) => {
 
 const resolve = (refPath, content, vars) => {
   const dirname = path.dirname(refPath);
-  return loadRecursive(dirname, dirname, content, vars);
+  return loadRecursive(dirname, dirname, yaml.safeLoad(content), vars);
 };
 module.exports.resolve = resolve;
 
 module.exports.load = (filePath, vars = {}) => resolve(
   filePath,
-  yaml.safeLoad(fs.readFileSync(filePath, 'utf8')),
+  fs.readFileSync(filePath, 'utf8'),
   vars
 );
 
