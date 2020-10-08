@@ -58,9 +58,14 @@ const loadRecursive = (dir, relDir, data, vars) => {
   return result;
 };
 
-module.exports.load = (filePath, vars = {}) => loadRecursive(
-  path.dirname(filePath),
-  path.dirname(filePath),
+const resolve = (refPath, content, vars) => {
+  const dirname = path.dirname(refPath);
+  return loadRecursive(dirname, dirname, content, vars);
+};
+module.exports.resolve = resolve;
+
+module.exports.load = (filePath, vars = {}) => resolve(
+  filePath,
   yaml.safeLoad(fs.readFileSync(filePath, 'utf8')),
   vars
 );
