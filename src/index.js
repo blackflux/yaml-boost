@@ -35,7 +35,7 @@ const loadRecursive = (dir, relDir, data, vars) => {
           : path.join(dir, match[2]);
         newRelDir = path.dirname(filePath);
         loaded = (filePath.endsWith('.yml') || filePath.endsWith('.yaml'))
-          ? yaml.safeLoad(fs.readFileSync(filePath, 'utf8'))
+          ? yaml.load(fs.readFileSync(filePath, 'utf8'))
           // eslint-disable-next-line global-require, import/no-dynamic-require
           : require(filePath);
         if (match[1] === 'fileFn') {
@@ -60,7 +60,7 @@ const loadRecursive = (dir, relDir, data, vars) => {
 
 const resolve = (refPath, content, vars) => {
   const dirname = path.dirname(refPath);
-  return loadRecursive(dirname, dirname, yaml.safeLoad(content), vars);
+  return loadRecursive(dirname, dirname, yaml.load(content), vars);
 };
 module.exports.resolve = resolve;
 
