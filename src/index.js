@@ -70,4 +70,4 @@ module.exports.load = (filePath, vars = {}) => resolve(
   vars
 );
 
-module.exports.dump = yaml.safeDump;
+module.exports.dump = yaml.dump;
