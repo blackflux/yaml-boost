@@ -8,7 +8,7 @@
       "packageName": "yaml-boost",
       "projectName": "yaml-boost",
       "owner": "simlu",
-      "nodeVersion": "10",
+      "nodeVersion": "12",
       "ownerName": "Lukas Siemon",
       "mergeBot": "MrsFlux"
     }
