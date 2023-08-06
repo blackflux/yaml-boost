@@ -1,44 +1,44 @@
-const expect = require('chai').expect;
-const path = require('path');
-const yaml = require('../src/index');
+import path from 'path';
+import fs from 'smart-fs';
+import * as chai from 'chai';
+import * as yaml from '../src/index.js';
 
-const variablesFile = path.join(__dirname, 'resources', 'variables.yml');
-const mergeFile = path.join(__dirname, 'resources', 'merge.yml');
-const parentFile = path.join(__dirname, 'resources', 'parent.yml');
+const { expect } = chai;
+
+const variablesFile = path.join(fs.dirname(import.meta.url), 'resources', 'variables.yml');
+const mergeFile = path.join(fs.dirname(import.meta.url), 'resources', 'merge.yml');
+const parentFile = path.join(fs.dirname(import.meta.url), 'resources', 'parent.yml');
 
 describe('Testing Yaml', () => {
-  it('Testing Variable Undefined', () => {
-    expect(yaml.load(variablesFile)).to.deep.equal({
+  it('Testing Variable Undefined', async () => {
+    expect(await yaml.load(variablesFile)).to.deep.equal({
       // eslint-disable-next-line no-template-curly-in-string
       plain: '${opt:test}', default: 'default.dot'
     });
   });
 
-  it('Testing Variable Provided', () => {
-    expect(yaml.load(variablesFile, { test: 'value' })).to.deep.equal({
+  it('Testing Variable Provided', async () => {
+    expect(await yaml.load(variablesFile, { test: 'value' })).to.deep.equal({
       plain: 'value', default: 'value'
     });
   });
 
-  it('Testing Merge', () => {
-    expect(yaml.load(mergeFile)).to.deep.equal({
+  it('Testing Merge', async () => {
+    expect(await yaml.load(mergeFile)).to.deep.equal({
       a: { b: 'c', d: 'e', list: ['x', 'y', 'z'] }
     });
   });
 
-  it('Testing File Resolution', () => {
-    expect(yaml.load(parentFile)).to.deep.equal({
+  it('Testing File Resolution', async () => {
+    expect(await yaml.load(parentFile)).to.deep.equal({
       child: { key: 'value' },
       childValue: 'value',
       childBaked: { key: 'value' },
       childJs: { key: 'value' },
       childFn: { key: { variable: 'value' } },
-      // eslint-disable-next-line global-require
-      childRequireKey: { key: require('chai').version },
-      // eslint-disable-next-line global-require
-      childRequireFn: { key: require('path').join() },
-      // eslint-disable-next-line global-require
-      childRequire: { key: require('chai') },
+      childRequireKey: { key: chai.version },
+      childRequireFn: { key: path.join() },
+      childRequire: { key: chai },
       childDir: { grandchild: { key: 'value' } }
     });
   });
