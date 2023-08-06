@@ -10,8 +10,8 @@
       "owner": "simlu",
       "nodeVersion": "16",
       "ownerName": "Lukas Siemon",
-      "mergeBot": "MrsFlux"
-,"nccEnabled": false
+      "mergeBot": "MrsFlux",
+      "nccEnabled": false
     }
   }
 }

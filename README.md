@@ -37,9 +37,9 @@ As provided by `js-yaml` through `safeDump`
 
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
-import yaml from 'yaml-boost';
+import { load } from 'yaml-boost';
 
-yaml.load('config.yaml');
+load('config.yaml');
 ```
 
 Matching `yaml.dump()` function is also available.
@@ -136,9 +136,9 @@ Define `serverless.js` as
 ```js
 import path from 'path';
 import minimist from 'minimist';
-import yaml from 'yaml-boost';
+import { load } from 'yaml-boost';
 
-const cfg = await yaml.load(path.join(__dirname, 'serverless.core.yml'), minimist(process.argv.slice(2)));
+const cfg = await load(path.join(__dirname, 'serverless.core.yml'), minimist(process.argv.slice(2)));
 export default cfg;
 ```
 
