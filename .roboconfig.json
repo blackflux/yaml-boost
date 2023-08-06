@@ -8,9 +8,10 @@
       "packageName": "yaml-boost",
       "projectName": "yaml-boost",
       "owner": "simlu",
-      "nodeVersion": "12",
+      "nodeVersion": "16",
       "ownerName": "Lukas Siemon",
       "mergeBot": "MrsFlux"
+,"nccEnabled": false
     }
   }
 }

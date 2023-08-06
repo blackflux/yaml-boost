@@ -23,9 +23,11 @@ Useful for loading improved [serverless](https://serverless.com/) configuration.
 
 Resolve content with variables at given refPath.
 
-### load(filePath, vars = {})
+### async load(filePath, vars = {})
 
 Load filePath with given variables.
+
+Note that this function is asynchronous.
 
 ### dump
 
@@ -35,7 +37,7 @@ As provided by `js-yaml` through `safeDump`
 
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
-const yaml = require('yaml-boost');
+import yaml from 'yaml-boost';
 
 yaml.load('config.yaml');
 ```
@@ -75,7 +77,7 @@ ${file(./path/to/file.js)}
 The reference file needs to export simple object containing configuration
 
 ```js
-module.exports = {};
+export default {};
 ```
 
 ##### Reference Function inside Js file
@@ -89,7 +91,7 @@ ${fileFn(./path/to/file.js)}
 The reference file needs to export simple function returning an object. Available variables are passed in.
 
 ```js
-module.exports = (args) => ({ args });
+export default (args) => ({ args });
 ```
 
 ##### Relative File References
@@ -132,11 +134,12 @@ Define `serverless.js` as
 
 <!-- eslint-disable import/no-unresolved, import/no-extraneous-dependencies -->
 ```js
-const path = require('path');
-const minimist = require('minimist');
-const yaml = require('yaml-boost');
+import path from 'path';
+import minimist from 'minimist';
+import yaml from 'yaml-boost';
 
-module.exports = yaml.load(path.join(__dirname, 'serverless.core.yml'), minimist(process.argv.slice(2)));
+const cfg = await yaml.load(path.join(__dirname, 'serverless.core.yml'), minimist(process.argv.slice(2)));
+export default cfg;
 ```
 
 Then instead of defining `serverless.yml`, define your config in `serverless.core.yml`.

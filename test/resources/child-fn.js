@@ -1,1 +1,1 @@
-module.exports = (args) => ({ key: args });
+export default (args) => ({ key: args });
