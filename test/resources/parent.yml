@@ -19,7 +19,7 @@ childDir:
   ${file(./dir/child.yml)}
 
 childRequireKey:
-  key: ${require(chai):version}
+  key: ${require(chai):config}
 
 childRequireFn:
   key: ${require(path):join}
