@@ -36,7 +36,7 @@ describe('Testing Yaml', () => {
       childBaked: { key: 'value' },
       childJs: { key: 'value' },
       childFn: { key: { variable: 'value' } },
-      childRequireKey: { key: chai.version },
+      childRequireKey: { key: chai.config },
       childRequireFn: { key: path.join() },
       childRequire: { key: chai },
       childDir: { grandchild: { key: 'value' } }
