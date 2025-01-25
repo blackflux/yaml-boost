@@ -41,7 +41,10 @@ const loadRecursive = async (dir, relDir, data, vars) => {
           loaded = loaded(varsNew);
         }
       } else {
-        loaded = (await import(match[2])).default;
+        loaded = await import(match[2]);
+        if ('default' in loaded) {
+          loaded = loaded.default;
+        }
       }
       const target = match[3] ? get(loaded, match[3]) : loaded;
       result = await loadRecursive(dir, newRelDir, typeof target === 'function' ? target() : target, varsNew);

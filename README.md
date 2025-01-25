@@ -54,7 +54,7 @@ Both `yml` and `yaml` file endings are supported.
 
 ##### Bake variables when loading files
 
-```yaml
+```
 ${file(./path/to/file.yml), key1=value1&key2=value2}
 ```
 
@@ -62,7 +62,7 @@ ${file(./path/to/file.yml), key1=value1&key2=value2}
 
 You can reference packages by using
 
-```yaml
+```
 ${require(PACKAGE):path.to.key.in.module}
 ```
 
@@ -70,7 +70,7 @@ ${require(PACKAGE):path.to.key.in.module}
 
 Reference js instead of yaml files.
 
-```yaml
+```
 ${file(./path/to/file.js)}
 ```
 
@@ -84,7 +84,7 @@ export default {};
 
 Reference function inside js file.
 
-```yaml
+```
 ${fileFn(./path/to/file.js)}
 ```
 
@@ -98,7 +98,7 @@ export default (args) => ({ args });
 
 Once can reference files relative to the current file by using `^` as a prefix like so
 
-```yaml
+```
 ${file(^/subfolder/of/current/file.yml)}
 ```
 
@@ -109,7 +109,7 @@ This is helpful when merging files into already existing hierarchies.
 
 Example:
 
-```yaml
+```
 data:
   - list entry one
 
@@ -121,7 +121,7 @@ data:
 
 results in
 
-```yaml
+```
 data:
   - list entry one
   - list entry two
