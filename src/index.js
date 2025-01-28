@@ -5,6 +5,14 @@ import set from 'lodash.set';
 import mergeWith from 'lodash.mergewith';
 import yaml from 'js-yaml';
 
+// todo: use when node 20 is deprecated
+// import { createRequire } from 'module';
+// const requireRaw = createRequire(import.meta.url);
+// const requireEsm = (arg) => {
+//   const result = requireRaw(arg);
+//   return 'default' in result ? result.default : result;
+// };
+
 const concatArrays = (objValue, srcValue) => ([objValue, srcValue]
   .every(Array.isArray) ? objValue.concat(srcValue) : undefined);
 
