@@ -1,14 +1,21 @@
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
 import get from 'lodash.get';
 import set from 'lodash.set';
 import mergeWith from 'lodash.mergewith';
 import yaml from 'js-yaml';
 
+const requireRaw = createRequire(import.meta.url);
+const requireEsm = (arg) => {
+  const result = requireRaw(arg);
+  return 'default' in result ? result.default : result;
+};
+
 const concatArrays = (objValue, srcValue) => ([objValue, srcValue]
   .every(Array.isArray) ? objValue.concat(srcValue) : undefined);
 
-const loadRecursive = async (dir, relDir, data, vars) => {
+const loadRecursive = (dir, relDir, data, vars) => {
   let result = data;
   if (typeof result === 'string' || result instanceof String) {
     // replace yaml variables with defaults
@@ -36,36 +43,31 @@ const loadRecursive = async (dir, relDir, data, vars) => {
         newRelDir = path.dirname(filePath);
         loaded = (filePath.endsWith('.yml') || filePath.endsWith('.yaml'))
           ? yaml.load(fs.readFileSync(filePath, 'utf8'))
-          : (await import(filePath)).default;
+          : requireEsm(filePath);
         if (match[1] === 'fileFn') {
           loaded = loaded(varsNew);
         }
       } else {
-        loaded = await import(match[2]);
-        if ('default' in loaded) {
-          loaded = loaded.default;
-        }
+        loaded = requireEsm(match[2]);
       }
       const target = match[3] ? get(loaded, match[3]) : loaded;
-      result = await loadRecursive(dir, newRelDir, typeof target === 'function' ? target() : target, varsNew);
+      result = loadRecursive(dir, newRelDir, typeof target === 'function' ? target() : target, varsNew);
     }
   }
   if (result instanceof Object) {
-    const toMerge = await Promise.all(
-      get(result, '<<<', [])
-        .map((e) => loadRecursive(dir, relDir, e, vars))
-    );
+    const toMerge = get(result, '<<<', [])
+      .map((e) => loadRecursive(dir, relDir, e, vars));
     delete result['<<<'];
     const keys = Object.keys(result);
-    const values = await Promise.all(keys
-      .map((key) => loadRecursive(dir, relDir, get(result, key), vars)));
+    const values = keys
+      .map((key) => loadRecursive(dir, relDir, get(result, key), vars));
     keys.forEach((key, idx) => set(result, key, values[idx]));
     result = toMerge.reduce((prev, cur) => mergeWith(prev, cur, concatArrays), result);
   }
   return result;
 };
 
-export const resolve = async (refPath, content, vars) => {
+export const resolve = (refPath, content, vars) => {
   const dirname = path.dirname(refPath);
   return loadRecursive(dirname, dirname, yaml.load(content), vars);
 };
