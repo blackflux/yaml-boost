@@ -1864,6 +1864,15 @@ fs-extra@11.1.1:
     jsonfile "^6.0.1"
     universalify "^2.0.0"
 
+fs-extra@11.3.0:
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.3.0.tgz#0daced136bbaf65a555a326719af931adc7a314d"
+  integrity sha512-Z4XaCL6dUDHfP/jT25jJKMmtxvuwbkrD1vNSMFlo9lNLY2c5FHYSQgHPRZUjAB26TpDEoW9HCOgplrdbaPV/ew==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
 fsevents@~2.3.2:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
@@ -3271,6 +3280,13 @@ object-lib@4.0.0:
   dependencies:
     object-scan "19.0.0"
 
+object-lib@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/object-lib/-/object-lib-4.1.1.tgz#362ad0b9423298e506e506dd976302515e1f3357"
+  integrity sha512-nk+EkF3yhh19dWEZtkMD1XjwFVqml0o0WLCraYu0VmiIYHAy1L5dS1BpJInXeUl7OM5k28tWYL9Kc3mXTsBUpQ==
+  dependencies:
+    object-scan "19.0.5"
+
 object-scan@17.0.0:
   version "17.0.0"
   resolved "https://registry.yarnpkg.com/object-scan/-/object-scan-17.0.0.tgz#ee51a7f7c2b6a056ae513a67d75955ddcf545fd1"
@@ -3280,6 +3296,11 @@ object-scan@19.0.0:
   version "19.0.0"
   resolved "https://registry.yarnpkg.com/object-scan/-/object-scan-19.0.0.tgz#0ff5ecbe8252a9eb4dbfc0449c38492d28eea36d"
   integrity sha512-+xzZ7FYcxTZsi6TlXOGrv76kUlBeNjuDnt09BjlUv6HhVrGMOzaaDtiZ+1MqB8zWTb8jASVBbK61409bGdaDkw==
+
+object-scan@19.0.5:
+  version "19.0.5"
+  resolved "https://registry.yarnpkg.com/object-scan/-/object-scan-19.0.5.tgz#853bc3ba114507123e8df986e63e632e8144c571"
+  integrity sha512-5rr03NDQJ3oW4gWamHxON45ZLoFe6VCsRJ+trMlYWXlnYTGsuX/eD6MPp9yItzqFhd0pUpgzPm0jrYoeubIsIA==
 
 object-treeify@4.0.0:
   version "4.0.0"
@@ -4080,6 +4101,20 @@ smart-fs@4.0.1:
     lodash.clonedeep "4.5.0"
     lodash.isequal "4.5.0"
     object-lib "4.0.0"
+    xml-js "1.6.11"
+    yaml-boost "2.0.1"
+
+smart-fs@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/smart-fs/-/smart-fs-5.0.1.tgz#a8f3fb1881ed5d8296786778c3e29e530fccb32d"
+  integrity sha512-WR0SMlAIuP6SafzKuqBDdfo0fB5kqMgUCJgsjyUAQeg8BWQHpoO7bbmuJYJEmTY5de3l9sL3DmJf4cipVeLkCg==
+  dependencies:
+    fs-extra "11.3.0"
+    js-yaml "4.1.0"
+    json-stringify-pretty-compact "4.0.0"
+    lodash.clonedeep "4.5.0"
+    lodash.isequal "4.5.0"
+    object-lib "4.1.1"
     xml-js "1.6.11"
     yaml-boost "2.0.1"
 
